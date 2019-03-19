@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static char mostRepeated(string s)
+        {
+            int[] count = new int[256];//ก่อนอื่นก็ต้องประกาศintegerของarrayจำนวนช่องของอาร์เรย์ให้มีค่าเท่ากับ256
+            int max = 0;//ประกาศค่าสูงสุดให้เท่ากับ0
+            char result = char.MinValue;
+            Array.Clear(count, 0, count.Length - 1);//เคลียทุกอย่างให้เป็น0เพื่อให้การนับอาร์เรย์ของเรานั้นเริ่มจาก0
+            foreach (char c in s)
+            
+                if (c !=' ' && ++count[c] > max)
+                {
+                    max = count[c];//สูงสุดก็จะให้นับc  
+                    result = c;
+                }
+            return result;
+
+        }
+        static void Main(string[] args)
+        {
+            string str = "AAAANkkkkkkkkkM";//บรรทัดนี้สำหรับรับค่าอักขระ
+            Console.WriteLine("Most repeated char is '{0}'", mostRepeated(str));//แสดงค่าอักขระที่มากที่สุด
+        }
+    }
+}
